@@ -1,0 +1,26 @@
+-- LUA Made by Reli 12/12/24 @ 4:17AM
+
+-- Services
+
+local player = game:GetService("Players").LocalPlayer
+local RunServ = game:GetService("RunService")
+
+-- NPCS
+
+local NPCNameGoesHere = TheModelName:WaitForChild("Torso").Position
+
+-- GUI
+
+local NPCFrame = script.Parent -- The script should be in a "Self Script" folder which makes scripts organized
+
+RunServ.Heartbeat:Connect(function()
+
+local plrpos = player.Character:FindFirstChild("humanoidRootPart")
+if (plrpos.Position - NPCNameGoesHere).Magnitude <= 10 and plrpos then
+  NPCFrame.Visible = true
+	NPCFrame:GetPropertyChangedSignal("Visible"):Connect(function()
+		end)
+	else
+		NPCFrame.Visible = false
+		end
+end)
